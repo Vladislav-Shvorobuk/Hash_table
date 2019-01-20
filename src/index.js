@@ -15,18 +15,27 @@ class HashTable {
       return res % this.length;
     }
   }
-  add(key, val) {
-    const keyRes = this.hash(key);
+
+  add(keys, val) {
+    const keyRes = this.hash(keys);
 
     if (this.table[keyRes]) {
-      if (this.table[keyRes].key === key) {
-        this.table[keyRes] = { key, 'value': [...this.table[keyRes].value, ...val] };
-      } else if (this.table[keyRes].key !== key) {
-        this.table.push({ key, 'value': val });
-      }
-    }
+      const duplicateElement = this.table[keyRes];
 
-    this.table[keyRes] = { key, 'value': val };
+      if (duplicateElement.key !== keys) {
+        this.table.push({ 'key': keys, 'value': val });
+      }
+
+      if (duplicateElement.key === keys) {
+        if (duplicateElement.value instanceof Array) {
+          duplicateElement.value.push(val);
+        } else {
+          this.table[keyRes].value = [...[duplicateElement.value], ...[val]];
+        }
+      }
+    } else {
+      this.table[keyRes] = { 'key': keys, 'value': val };
+    }
   }
   remove(key) {
     const keyRes = this.hash(key);
@@ -40,7 +49,6 @@ class HashTable {
   }
 }
 
-
 const myHT = new HashTable(10);
 
 myHT.add('Dean', 'dean@gemail.com');
@@ -49,6 +57,5 @@ myHT.add('Dane', 'dane@gemail.com');
 myHT.add('Dean', 'deanmachine@gemail.com');
 
 console.log(myHT);
-
 
 export default HashTable;
