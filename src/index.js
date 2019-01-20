@@ -51,4 +51,4 @@ myHT.add('Dean', 'deanmachine@gemail.com');
 console.log(myHT);
 
 
-// export default HashTable;
+export default HashTable;
