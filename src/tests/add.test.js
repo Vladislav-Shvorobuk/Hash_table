@@ -1,7 +1,6 @@
 import HashTable from '../index';
 
 describe('tests for method add', () => {
-
   test('instance has method add', () => {
     const hashTable = new HashTable(5);
     expect(hashTable.add).toBeInstanceOf(Function);
@@ -9,7 +8,6 @@ describe('tests for method add', () => {
 
   test('hashtable length shouldn\'t mutate after using method \'add\'', () => {
     const hashTable = new HashTable(3);
-    
     hashTable.add('Charlie', 'Chaplin');
     hashTable.add('Bob', 'Grahovsky');
     hashTable.add('Charlie', 'Chaplin');
@@ -19,10 +17,16 @@ describe('tests for method add', () => {
 
   test('method \'add\' must add element to the hashTable', () => {
     const hashTable = new HashTable(1);
-    
     hashTable.add('Ann', 'Blur');
 
-    expect(hashTable.table[0]).toEqual({ key:'Ann', value: 'Blur'});
+    expect(hashTable.table[0]).toEqual({ key: 'Ann', value: 'Blur' });
   });
 
+  test('method \'add\' shouldn\'t mutate object with the same key and value', () => {
+    const hashTable = new HashTable(1);
+    hashTable.add('Bob', 'Dilan');
+    hashTable.add('Bob', 'Dilan');
+
+    expect(hashTable.table[0]).toEqual({ key: 'Bob', value: 'Dilan' });
+  });
 });

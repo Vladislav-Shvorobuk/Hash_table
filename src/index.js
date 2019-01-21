@@ -57,6 +57,7 @@ myHT.add('Megan', 'megan@gemail.com');
 myHT.add('Dane', 'dane@gemail.com');
 myHT.add('Dean', 'deanmachine@gemail.com');
 
+// eslint-disable-next-line no-console
 console.log(myHT);
 
 export default HashTable;

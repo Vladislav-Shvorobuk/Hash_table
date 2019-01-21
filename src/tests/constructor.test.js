@@ -2,7 +2,7 @@ import HashTable from '../index';
 
 describe('tests for constructor', () => {
   
-  test('should has a constructor in HashTable ', () => {
+  test('must has a constructor in HashTable ', () => {
     expect(HashTable.prototype.constructor).toBe(HashTable);
   });
 
