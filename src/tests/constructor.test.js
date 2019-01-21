@@ -13,8 +13,7 @@ describe('tests for constructor', () => {
     expect(hashTable2.table.length).toBe(20);
   });
 
-  // test('without argument \'length\' should create an empty hashtable', () => {
-  //   const hashTable = new HashTable();
-  //   expect(hashTable.table.length).toBe(0);
-  // });
+  test('without argument \'length\' should throw an Error', () => {
+    expect(new HashTable()).toThrow(Error);
+  });
 });
